@@ -10,7 +10,7 @@ function isValidName(name) {
   return _.isString(name) && name.trim().length > 0;
 }
 
-function isValidStats(newCharacter) {
+function isValidInitialStats(newCharacter) {
   //  Improve this
   if (!newCharacter){
     return false;
@@ -26,5 +26,6 @@ function isValidInitialStat(stat) {
 }
 
 module.exports = {
-  isValidName: isValidName
+  isValidName: isValidName,
+  isValidInitialStats: isValidInitialStats
 };

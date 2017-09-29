@@ -6,6 +6,7 @@ dotenv.config();
 const express = require('express');
 const router = require('../server/core/router.js');
 const logger = require('./logger');
+require('../server/models/database');
 
 const app = express();
 

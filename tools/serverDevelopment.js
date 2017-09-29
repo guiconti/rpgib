@@ -8,6 +8,7 @@ const router = require('../server/core/router.js');
 const morgan = require('morgan');
 const logger = require('./logger');
 const app = express();
+require('../server/models/database');
 
 app.use('/api', router);
 app.use(logger.errorHandler());

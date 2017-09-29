@@ -6,7 +6,7 @@
 const _ = require('underscore');
 const validator = require('../utils/validator');
 const constants = require('../utils/constants');
-const database = require('../../models/database');
+const database = require('../models/database');
 
 /**
  * Create a new character
@@ -20,9 +20,11 @@ module.exports = (req, res) => {
   if (!validator.isValidName(body.name)){
     return res.status(400).json(constants.message.error.INVALID_NAME);
   }
+  if(!validator.isValidInitialStats(body)){
+    return res.status(400).json(constants.message.error.INVALID_STATS);
+  }
   body.name = body.name.trim();
   let newCharacter = database.character.build(body);
-  //  Temporary
   newCharacter
     .save()
     .then((createdCharacter) => {
