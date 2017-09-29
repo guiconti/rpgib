@@ -45,8 +45,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 1
-    },
+    }
   });
+
+  Character.associate = (models) => {
+    Character.belongsTo(models.territory)
+  };
 
   return Character;
 };
