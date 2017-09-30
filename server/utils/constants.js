@@ -14,13 +14,18 @@ module.exports = {
         title: 'Invalid stats',
         body: 'Your stats surpass your points to start a character.'
       },
+      INVALID_SIZE: {
+        title: 'Invalid size',
+        body: 'The territory height/width is invalid.'
+      },
       UNEXPECTED_DATABASE: {
         title: 'Unexpected error',
         body: 'An error occurred while saving your information. Please try again later.'
       }
     },
     info: {
-      CHARACTER_CREATED: 'Player created'
+      CHARACTER_CREATED: 'Player created',
+      TERRITORY_CREATED: 'Territory created'
     }
   },
   values: {

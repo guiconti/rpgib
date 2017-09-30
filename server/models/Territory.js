@@ -11,11 +11,20 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       notEmpty: true
     },
+    height: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
+    },
+    width: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
+    }
   });
   
   Territory.associate = (models) => {
     Territory.belongsToMany(models.territory, {
-      as: 'adjacents',
       foreignKey: 'adjacentId',
       through: models.territory_adjacent
     });

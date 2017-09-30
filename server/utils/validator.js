@@ -25,7 +25,19 @@ function isValidInitialStat(stat) {
     && stat <= constants.values.MAX_INITIAL_STAT_AMOUNT;
 }
 
+function isValidTerritorySize(territory) {
+  if(!territory){
+    return false;
+  }
+  return isPositiveInteger(territory.height) && isPositiveInteger(territory.width);
+}
+
+function isPositiveInteger(number){
+  return _.isNumber(number) & number > 0 & number <= Number.MAX_SAFE_INTEGER;
+}
+
 module.exports = {
   isValidName: isValidName,
-  isValidInitialStats: isValidInitialStats
+  isValidInitialStats: isValidInitialStats,
+  isValidTerritorySize: isValidTerritorySize
 };
