@@ -6,6 +6,16 @@
 const _ = require('underscore');
 const constants = require('./constants');
 
+function isValidId(id) {
+  try{
+    return _.isString(id) && id.trim().length > 0 && id.trim().length <= constants.MAX_STRING_LENGTH && 
+      constants.regex.UUID.test(id);
+  } catch(err){
+    logger.error(err);
+    return false;
+  }
+}
+
 function isValidName(name) {
   return _.isString(name) && name.trim().length > 0;
 }
@@ -37,7 +47,9 @@ function isPositiveInteger(number){
 }
 
 module.exports = {
+  isValidId: isValidId,
   isValidName: isValidName,
   isValidInitialStats: isValidInitialStats,
-  isValidTerritorySize: isValidTerritorySize
+  isValidTerritorySize: isValidTerritorySize,
+  isPositiveInteger: isPositiveInteger
 };
