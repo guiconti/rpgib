@@ -6,6 +6,10 @@
 module.exports = {
   message: {
     error: {
+      INVALID_ID: {
+        title: 'Invalid id',
+        body: 'An id sent is not in UUID standard.'
+      },
       INVALID_NAME: {
         title: 'Invalid name',
         body: 'Your name have to be a not empty string.'

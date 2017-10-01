@@ -8,7 +8,6 @@ const logger = require('../../tools/logger');
 const validator = require('../utils/validator');
 const constants = require('../utils/constants');
 const database = require('../models/database');
-
 /**
  * Create a new character
  *

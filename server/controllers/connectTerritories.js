@@ -17,12 +17,12 @@ const database = require('../models/database');
  * @return {json} - Return the status and a json response message
  */
 module.exports = (req, res) => {
-  let body = _.pick(req.body, 'origin', 'destination', 'distance');
-  if (!validator.isValidName(body.origin)){
-    return res.status(400).json(constants.message.error.INVALID_NAME);
+  let body = _.pick(req.body, 'originId', 'destinationId', 'distance');
+  if (!validator.isValidId(body.originId)){
+    return res.status(400).json(constants.message.error.INVALID_ID);
   }
-  if (!validator.isValidName(body.destination)){
-    return res.status(400).json(constants.message.error.INVALID_NAME);
+  if (!validator.isValidId(body.destinationId)){
+    return res.status(400).json(constants.message.error.INVALID_ID);
   }
   if(!validator.isPositiveInteger(body.distance)){
     return res.status(400).json(constants.message.error.INVALID_DISTANCE);

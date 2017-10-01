@@ -21,7 +21,6 @@ function isValidName(name) {
 }
 
 function isValidInitialStats(newCharacter) {
-  //  Improve this
   if (!newCharacter){
     return false;
   }
