@@ -26,6 +26,14 @@ module.exports = {
         title: 'Invalid distance',
         body: 'The distance between the territories is invalid.'
       },
+      ORIGIN_NOT_FOUND: {
+        title: 'Origin territory does not exist',
+        body: 'The origin id sent was not found in our database'
+      },
+      DESTINATION_NOT_FOUND: {
+        title: 'Destination territory does not exist',
+        body: 'The destination id sent was not found in our database'
+      },
       UNEXPECTED_DATABASE: {
         title: 'Unexpected error',
         body: 'An error occurred while saving your information. Please try again later.'
@@ -33,12 +41,14 @@ module.exports = {
     },
     info: {
       CHARACTER_CREATED: 'Player created',
-      TERRITORY_CREATED: 'Territory created'
+      TERRITORY_CREATED: 'Territory created',
+      ADJACENT_ADDED: 'Territory connection created'
     }
   },
   values: {
     MIN_STAT_AMOUNT: 1,
-    MAX_INITIAL_STAT_AMOUNT: 9
+    MAX_INITIAL_STAT_AMOUNT: 9,
+    MAX_STRING_LENGTH: 256
   },
   regex: {
     UUID: /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i

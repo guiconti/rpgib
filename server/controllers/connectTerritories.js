@@ -24,18 +24,28 @@ module.exports = (req, res) => {
   if (!validator.isValidId(body.destinationId)){
     return res.status(400).json(constants.message.error.INVALID_ID);
   }
-  if(!validator.isPositiveInteger(body.distance)){
+  if(!validator.isPositiveInteger(parseInt(body.distance))){
     return res.status(400).json(constants.message.error.INVALID_DISTANCE);
   }
-  body.name = body.name.trim();
-  let newTerritory = database.territory.build(body);
-  newTerritory
-    .save()
-    .then((createdTerritory) => {
-      testMap = body;
-      return res.status(200).json({
-        msg: constants.message.info.TERRITORY_CREATED
-      });
+  body.distance = parseInt(body.distance);
+
+  database.territory.findById(body.originId)
+    .then((territoryToAddAdjacent) => {
+      if (!territoryToAddAdjacent){
+        return res.status(400).json(constants.message.error.ORIGIN_NOT_FOUND);
+      }
+      return territoryToAddAdjacent.addAdjacent(body.destinationId, {through:{distance:body.distance}})
+        .then(() => {
+          return res.status(200).json({msg: constants.message.info.ADJACENT_ADDED});
+        })
+        .catch(database.Sequelize.ForeignKeyConstraintError, () => {
+          return res.status(400).json(constants.message.error.DESTINATION_NOT_FOUND);
+        })
+        .catch((err) => {
+          console.log(err);
+          logger.error(err);
+          return res.status(500).json(constants.message.error.UNEXPECTED_DATABASE);
+        });
     })
     .catch((err) => {
       logger.error(err);

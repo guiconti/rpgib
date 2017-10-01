@@ -8,7 +8,7 @@ const constants = require('./constants');
 
 function isValidId(id) {
   try{
-    return _.isString(id) && id.trim().length > 0 && id.trim().length <= constants.MAX_STRING_LENGTH && 
+    return _.isString(id) && id.trim().length > 0 && id.trim().length <= constants.values.MAX_STRING_LENGTH && 
       constants.regex.UUID.test(id);
   } catch(err){
     logger.error(err);

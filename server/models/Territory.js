@@ -25,9 +25,16 @@ module.exports = (sequelize, DataTypes) => {
   
   Territory.associate = (models) => {
     Territory.belongsToMany(models.territory, {
-      as: 'adjacents',
+      through: models.territory_adjacent,
+      as: 'adjacent',
+      foreignKey: 'originId',
+      otherKey: 'adjacentId'
+    });
+    Territory.belongsToMany(models.territory, {
+      through: models.territory_adjacent,
+      as: 'adjacency',
       foreignKey: 'adjacentId',
-      through: models.territory_adjacent
+      otherKey: 'originId'
     });
   };
 
